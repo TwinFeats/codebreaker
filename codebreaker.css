@@ -1,0 +1,229 @@
+  
+* {
+    touch-action: none;
+}
+
+html, body {
+    background-color: black;
+    color: white;
+    margin: 0;
+    font-size: 36pt;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+    padding: 1em;
+}
+
+h1 {
+    margin: 0 0 .5em 0;
+    font-family: Wallpoet, sans-serif;
+    color: white;
+    /* text-shadow: .05em .05em .1em rgb(0, 247, 255); */
+    text-align: center;
+    font-size: 48pt;
+    font-weight: normal;
+}
+
+#game {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    font-size: 18pt;
+}
+
+#gameboard {
+    display: grid;
+    grid-gap: 0.5em;
+    background-color: #303030;
+    padding: .5em;
+}
+
+.gameboard4 {
+    grid-template-columns: repeat(8, 1fr);
+}
+
+.gameboard5 {
+    grid-template-columns: repeat(9, 1fr);
+}
+
+.gameboard6 {
+    grid-template-columns: repeat(10, 1fr);
+}
+
+#gameboard > * {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    box-sizing: border-box;
+    border-radius: 50%;
+    padding: .2em;
+    position: relative;
+}
+
+
+.gameboard4 > * {
+    box-shadow: inset 0 0 calc((100vw - 3em) / (8 * 2)) black;
+}
+
+.gameboard5 > * {
+    box-shadow: inset 0 0 calc((100vw - 3em) / (9 * 2)) black;
+}
+
+.gameboard6 > * {
+    box-shadow: inset 0 0 calc((100vw - 3em) / (10 * 2)) black;
+}
+
+.gameboard4 > *:nth-child(8n-7) {
+    box-shadow: none !important;
+}
+
+.gameboard4 > *:nth-child(8n-2) {
+    box-shadow: none !important;
+}
+
+#gameboard > .yellow {
+    box-shadow: inset calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / 5) rgba(0,0,0,.5);
+    background-color: yellow;
+    filter: saturate(2);
+}
+
+#gameboard > .green {
+    box-shadow: inset calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / 5) rgba(0,0,0,.5);
+    background-color: lightgreen;
+    filter: saturate(2);
+}
+
+#gameboard > .red {
+    box-shadow: inset calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / 5) rgba(0,0,0,.5);
+    background-color: red;
+    filter: saturate(1.5);
+}
+
+#gameboard > .cyan {
+    box-shadow: inset calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / 5) rgba(0,0,0,.5);
+    background-color: cyan;
+    filter: saturate(1.5);
+}
+
+#gameboard > .purple {
+    box-shadow: inset calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / 5) rgba(0,0,0,.5);
+    background-color: violet;
+    filter: saturate(2);
+}
+
+#gameboard > .orange {
+    box-shadow: inset calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / 5) rgba(0,0,0,.5);
+    background-color: orange;
+    filter: saturate(2);
+}
+
+#gameboard > .white {
+    box-shadow: inset calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / 5) rgba(0,0,0,.5);
+    background-color: white;
+    filter: brightness(1.25);
+}
+
+#gameboard > .black {
+    box-shadow: inset calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / 5) rgba(0,0,0,.5);
+    background-color: #808080;
+    filter: saturate(2);
+}
+
+#gameboard.win > * {
+    background-color: yellow;
+}
+
+#gameboard.win .marker::after {
+    background-color: black;
+}
+
+#gameboard.bad .marker::after {
+    background-color: black;
+}
+
+figure {
+    font-size: .8em;
+    text-align: center;
+}
+
+#rules {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+    font-size: .8em;
+    padding: 1em;
+    border: 3px solid ridge gray;
+    overflow: auto;
+    background-color: black;
+}
+
+#rules #close {
+    position: fixed;
+    right: 3px;
+    top: 3px;
+    padding: .2em .4em;
+    border-radius: .25em;
+    line-height: 1;
+    color: white;
+    background-color: red;
+}
+
+#rules img {
+    width: 80%;
+}
+
+.show {
+    display: block !important;
+}
+
+.disable {
+    color: gray !important;
+    background-color: black !important;
+    border-color: darkgray !important;
+}
+
+.border {
+    background-color: #202020;
+}
+
+#options {
+    margin-top: 2em;
+    text-align: center;
+}
+
+#options > * {
+    margin-left: .5ch;
+    margin-right: .5ch;
+    font-size: 1rem;
+}
+
+#options button {
+    border-radius: .5em;
+    padding: 0 .5em;
+}
+
+#solve {
+    background-color: #00ff00;
+    color: black;
+    border-color: #00cc00
+}
+
+
+@media screen and (orientation: landscape) {
+    html, body {
+        font-size: 18pt;
+    }
+
+    body, #rules {
+        padding-left: 35%;
+        padding-right: 35%;
+    }
+
+    #gameboard > * {
+        box-shadow: inset 0 0 calc((100vw - 3em - 70vw) / (6 * 2)) black;
+    }
+}
