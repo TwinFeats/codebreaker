@@ -19,7 +19,6 @@ h1 {
     margin: 0 0 .5em 0;
     font-family: Wallpoet, sans-serif;
     color: white;
-    /* text-shadow: .05em .05em .1em rgb(0, 247, 255); */
     text-align: center;
     font-size: 48pt;
     font-weight: normal;
@@ -32,26 +31,34 @@ h1 {
     font-size: 18pt;
 }
 
-#gameboard {
+#gameboard, #palette {
     display: grid;
     grid-gap: 0.5em;
-    background-color: #303030;
+    background-color: #282828;
     padding: .5em;
 }
 
-.gameboard4 {
+#gameboard.win, #gameboard.win > * {
+    filter: invert();
+}
+
+#palette {
+    background-color: black;
+}
+
+.gameboard4, .palette4 {
     grid-template-columns: repeat(8, 1fr);
 }
 
-.gameboard5 {
+.gameboard5, .palette5 {
     grid-template-columns: repeat(9, 1fr);
 }
 
-.gameboard6 {
+.gameboard6, .palette6 {
     grid-template-columns: repeat(10, 1fr);
 }
 
-#gameboard > * {
+#gameboard > *, #palette > * {
     width: 100%;
     aspect-ratio: 1 / 1;
     box-sizing: border-box;
@@ -60,85 +67,139 @@ h1 {
     position: relative;
 }
 
+#palette > * {
+    box-shadow: none !important;
+    filter: saturate(1) !important;
+}
 
 .gameboard4 > * {
-    box-shadow: inset 0 0 calc((100vw - 3em) / (8 * 2)) black;
+    box-shadow: inset 0 0 calc((100vw - 3em) / (8 * 3)) black;
 }
 
 .gameboard5 > * {
-    box-shadow: inset 0 0 calc((100vw - 3em) / (9 * 2)) black;
+    box-shadow: inset 0 0 calc((100vw - 3em) / (9 * 3)) black;
 }
 
 .gameboard6 > * {
-    box-shadow: inset 0 0 calc((100vw - 3em) / (10 * 2)) black;
+    box-shadow: inset 0 0 calc((100vw - 3em) / (10 * 3)) black;
 }
 
-.gameboard4 > *:nth-child(8n-7) {
+.gameboard4 > *:nth-child(8n-7), .palette4 > *:nth-child(8n-7) {
     box-shadow: none !important;
 }
 
-.gameboard4 > *:nth-child(8n-2) {
+.gameboard4 > *:nth-child(8n-2), .palette4 > *:nth-child(8n-0) {
     box-shadow: none !important;
 }
 
-#gameboard > .yellow {
-    box-shadow: inset calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / 5) rgba(0,0,0,.5);
+.gameboard5 > *:nth-child(9n-8),
+.palette5 > *:nth-child(9n-8)
+{
+    box-shadow: none !important;
+}
+
+.gameboard5 > *:nth-child(9n-2) {
+    box-shadow: none !important;
+}
+
+.gameboard6 > *:nth-child(10n-9)
+{
+    box-shadow: none !important;
+}
+
+.gameboard6 > *:nth-child(10n-2) {
+    box-shadow: none !important;
+}
+
+#gameboard > .yellow, #palette > .yellow  {
+    box-shadow: none !important;
+    /* box-shadow: inset 0 0 calc(((100vw - 3em) / 8) / 10) rgba(0,0,0,.5); */
     background-color: yellow;
-    filter: saturate(2);
+    /* filter: saturate(2); */
 }
 
-#gameboard > .green {
-    box-shadow: inset calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / 5) rgba(0,0,0,.5);
+#gameboard > .green, #palette > .green {
+    box-shadow: none !important;
+    /* box-shadow: inset calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / 5) rgba(0,0,0,.5); */
     background-color: lightgreen;
-    filter: saturate(2);
+    /* filter: saturate(2); */
 }
 
-#gameboard > .red {
-    box-shadow: inset calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / 5) rgba(0,0,0,.5);
+#gameboard > .red, #palette > .red {
+    box-shadow: none !important;
+    /* box-shadow: inset calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / 5) rgba(0,0,0,.5); */
     background-color: red;
-    filter: saturate(1.5);
+    /* filter: saturate(1.5); */
 }
 
-#gameboard > .cyan {
-    box-shadow: inset calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / 5) rgba(0,0,0,.5);
+#gameboard > .cyan, #palette > .cyan {
+    box-shadow: none !important;
+    /* box-shadow: inset calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / 5) rgba(0,0,0,.5); */
     background-color: cyan;
-    filter: saturate(1.5);
+    /* filter: saturate(1.5); */
 }
 
-#gameboard > .purple {
-    box-shadow: inset calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / 5) rgba(0,0,0,.5);
+#gameboard > .violet, #palette > .violet {
+    box-shadow: none !important;
+    /* box-shadow: inset calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / 5) rgba(0,0,0,.5); */
     background-color: violet;
-    filter: saturate(2);
+    /* filter: saturate(2); */
 }
 
-#gameboard > .orange {
-    box-shadow: inset calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / 5) rgba(0,0,0,.5);
+#gameboard > .orange, #palette > .orange {
+    box-shadow: none !important;
+    /* box-shadow: inset calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / 5) rgba(0,0,0,.5); */
     background-color: orange;
-    filter: saturate(2);
+    /* filter: saturate(2); */
 }
+
+#gameboard > .pink, #palette > .pink {
+    box-shadow: none !important;
+    /* box-shadow: inset calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / 5) rgba(0,0,0,.5); */
+    background-color: pink;
+    /* filter: saturate(2); */
+}
+
+#gameboard > .brown, #palette > .brown {
+    box-shadow: none !important;
+    /* box-shadow: inset calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / 5) rgba(0,0,0,.5); */
+    background-color: brown;
+    /* filter: saturate(2); */
+}
+
+#gameboard > .purple, #palette > .purple {
+    box-shadow: none !important;
+    /* box-shadow: inset calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / 5) rgba(0,0,0,.5); */
+    background-color: purple;
+    /* filter: saturate(2); */
+}
+
+#gameboard > .royalblue, #palette > .royalblue {
+    box-shadow: none !important;
+    /* box-shadow: inset calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / 5) rgba(0,0,0,.5); */
+    background-color: royalblue;
+    /* filter: saturate(2); */
+}
+
 
 #gameboard > .white {
-    box-shadow: inset calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / 5) rgba(0,0,0,.5);
+    box-shadow: none !important;
+    /* box-shadow: inset calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / 5) rgba(0,0,0,.5); */
     background-color: white;
-    filter: brightness(1.25);
+    color: black;
+    /* filter: brightness(1.25); */
 }
 
 #gameboard > .black {
-    box-shadow: inset calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / 5) rgba(0,0,0,.5);
+    box-shadow: none !important;
+    /* box-shadow: inset calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / -10) calc(((100vw - 3em) / 8) / 5) rgba(0,0,0,.5); */
     background-color: #808080;
-    filter: saturate(2);
+    color: white;
+    /* filter: saturate(2); */
 }
 
-#gameboard.win > * {
-    background-color: yellow;
-}
-
-#gameboard.win .marker::after {
-    background-color: black;
-}
-
-#gameboard.bad .marker::after {
-    background-color: black;
+#palette > *.selected {
+    border: .2em solid white;
 }
 
 figure {
@@ -212,6 +273,24 @@ figure {
     border-color: #00cc00
 }
 
+#gameboard > * > * {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.gameboard4 > * > * {
+    font-size: calc((100vw - 3em) / 8 * .75);
+}
+
+.gameboard4 > * > * {
+    font-size: calc((100vw - 3em) / 9 * .75);
+}
+
+.gameboard4 > * > * {
+    font-size: calc((100vw - 3em) / 10 * .75);
+}
 
 @media screen and (orientation: landscape) {
     html, body {
@@ -224,6 +303,18 @@ figure {
     }
 
     #gameboard > * {
-        box-shadow: inset 0 0 calc((100vw - 3em - 70vw) / (6 * 2)) black;
+        box-shadow: inset 0 0 calc((100vw - 3em - 70vw) / (6 * 3)) black;
+    }
+
+    .gameboard4 > * > * {
+        font-size: calc((100vw - 3em - 70vw) / 8 * .6);
+    }
+    
+    .gameboard5 > * > * {
+        font-size: calc((100vw - 3em - 70vw) / 9 * .6);
+    }
+    
+    .gameboard6 > * > * {
+        font-size: calc((100vw - 3em - 70vw) / 10 * .6);
     }
 }
