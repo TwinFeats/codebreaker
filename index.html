@@ -5,9 +5,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Wallpoet&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="codebreaker.css?v=1.0.0">
+    <link rel="stylesheet" href="codebreaker.css?v=1.0.1">
     <script src="jsrand.min.js"></script>
-    <script src="codebreaker.js?v=1.0.0"></script>
+    <script src="codebreaker.js?v=1.0.1"></script>
 </head>
 
 <body>
@@ -49,8 +49,11 @@
         <p/>
         Good luck, code breaker!
     </div>
-    <audio id="startAudio">
-        <source src="audio/ding.mp3" />
+    <audio id="goodAudio">
+        <source src="audio/xylophone.mp3" />
+    </audio>
+    <audio id="badAudio">
+        <source src="audio/alarmbeep.mp3" />
     </audio>
     <script>
         init();

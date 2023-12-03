@@ -78,6 +78,14 @@ function holeClicked(event) {
     }
 }
 
+function playGood() {
+    document.getElementById("goodAudio").play();
+}
+
+function playBad() {
+    document.getElementById("badAudio").play();
+}
+
 function help() {
     document.getElementById("rules").classList.add("show");
 }
@@ -126,6 +134,7 @@ function submitCode(event) {
     row.parentElement.children[((turn-1) * (gameSize + 4)) + gameSize+3].classList.add("black");
 
     if (correct != gameSize) {
+        playBad();
         turn++;
         var html = `<div id="turn${turn}">${turn}</div>`;
         for (var c=0;c<gameSize;c++) {
@@ -136,6 +145,7 @@ function submitCode(event) {
         html += "<div></div>";  //black score
         gameboard.innerHTML = gameboard.innerHTML + html;
     } else {
+        playGood();
         blink(10, "win")
     }
 }
